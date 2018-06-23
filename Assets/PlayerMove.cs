@@ -5,7 +5,6 @@ using UnityEngine;
 public class PlayerMove : MonoBehaviour {
 
     private float MOVE_SPEED = 3;
-    // TODO: Make a game
 	// Use this for initialization
 	void Start () {
 		
