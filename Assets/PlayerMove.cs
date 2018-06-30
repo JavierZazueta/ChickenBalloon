@@ -5,28 +5,26 @@ using UnityEngine;
 public class PlayerMove : MonoBehaviour {
 
     private float MOVE_SPEED = 3;
+    private float ROTATION_SPEED = 100;
+    //public Rigidbody2D rb;
 	// Use this for initialization
 	void Start () {
-		
+        //rb = GetComponent<Rigidbody2D>();
 	}
 	
 	// Update is called once per frame
 	void Update () {
         if (Input.GetKey(KeyCode.D))
         {
-            transform.position += Vector3.right * MOVE_SPEED * Time.deltaTime;
+            transform.Rotate(new Vector3(0, 0, Time.deltaTime * -ROTATION_SPEED));
+            //rb.rotation += Time.deltaTime * -ROTATION_SPEED;
         }
         if (Input.GetKey(KeyCode.A))
         {
-            transform.position += Vector3.right * -MOVE_SPEED * Time.deltaTime;
+            transform.Rotate(new Vector3(0,0, Time.deltaTime * ROTATION_SPEED));
+            //rb.rotation += Time.deltaTime * ROTATION_SPEED;
         }
-        if (Input.GetKey(KeyCode.W))
-        {
-            transform.position += Vector3.up * MOVE_SPEED * Time.deltaTime;
-        }
-        if (Input.GetKey(KeyCode.S))
-        {
-            transform.position += Vector3.up * -MOVE_SPEED * Time.deltaTime;
-        }
+        transform.position += transform.up * MOVE_SPEED * Time.deltaTime;
+        //rb.velocity = rb.transform.up * MOVE_SPEED;
     }
 }
