@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerMove : MonoBehaviour {
 
@@ -26,5 +27,12 @@ public class PlayerMove : MonoBehaviour {
         }
         transform.position += transform.up * MOVE_SPEED * Time.deltaTime;
         //rb.velocity = rb.transform.up * MOVE_SPEED;
+    }
+
+    private void OnCollisionEnter2D(Collision2D col)
+    {
+        // Could check if col == "enemy"; then Destroy(this.gameObject);
+        Destroy(this.gameObject);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1);
     }
 }
